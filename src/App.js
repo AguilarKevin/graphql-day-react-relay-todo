@@ -1,12 +1,13 @@
-import React from 'react';
-import { ChakraProvider, Box, theme } from '@chakra-ui/react';
+import React from 'react'
+import {ChakraProvider, theme} from '@chakra-ui/react'
+import TodoIndex from './sections/TodoIndex'
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl"></Box>
+      <TodoIndex />
     </ChakraProvider>
-  );
+  )
 }
 
-export default App;
+export default App
