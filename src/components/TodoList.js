@@ -1,47 +1,52 @@
 import {Flex, Stack, Text, Button, useToken, Divider} from '@chakra-ui/react'
 import {faPlusSquare} from '@fortawesome/pro-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {useMemo} from 'react'
 import TodoListItem from './TodoListItem'
 
-const tasks = {
-  todo: [
-    {
+const allTodos = [
+  {
+    id: 1,
+    title: 'Learn React',
+    description: 'Learn React and Chakra UI',
+    completed: false,
+    user: {
       id: 1,
-      title: 'Learn React',
-      description: 'Learn React and Chakra UI',
-      completed: false,
-      user: {
-        id: 1,
-        name: 'Kevin',
-      },
+      name: 'Kevin',
     },
-    {
-      id: 3,
-      title: 'Learn Node.js',
-      description: 'Learn Node.js and Express',
-      completed: false,
-      user: {
-        id: 1,
-        name: 'Kevin',
-      },
+  },
+  {
+    id: 3,
+    title: 'Learn Node.js',
+    description: 'Learn Node.js and Express',
+    completed: false,
+    user: {
+      id: 1,
+      name: 'Kevin',
     },
-  ],
-  completed: [
-    {
-      id: 2,
-      title: 'Learn Next.js',
-      description: 'Learn Next.js',
-      completed: true,
-      user: {
-        id: 1,
-        name: 'Kevin',
-      },
+  },
+  {
+    id: 2,
+    title: 'Learn Next.js',
+    description: 'Learn Next.js',
+    completed: true,
+    user: {
+      id: 1,
+      name: 'Kevin',
     },
-  ],
-}
+  },
+]
 
 export default function TodoList() {
   const [pink200] = useToken('colors', ['blue.200'])
+
+  const tasks = useMemo(
+    () => ({
+      todo: allTodos.filter((todo) => !todo.completed),
+      completed: allTodos.filter((todo) => todo.completed),
+    }),
+    []
+  )
 
   return (
     <Flex gap="4">

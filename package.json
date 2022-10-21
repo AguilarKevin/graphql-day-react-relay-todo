@@ -14,7 +14,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
+    "react-relay": "14.1.0",
     "react-scripts": "5.0.1",
+    "relay-runtime": "14.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -22,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "download-schema": "gql-tools schema $GRAPHQL_URL ./schema"
+    "download-schema": "gql-tools schema $GRAPHQL_URL ./schema",
+    "relay": "relay-compiler"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +51,9 @@
     "@fortawesome/pro-thin-svg-icons": "6.2.0",
     "@fortawesome/react-fontawesome": "0.2.0",
     "@fortawesome/sharp-solid-svg-icons": "6.2.0",
-    "@nerdify/gql-tools": "0.0.0-alpha-1.1"
+    "@nerdify/gql-tools": "0.0.0-alpha-1.1",
+    "babel-plugin-relay": "14.1.0",
+    "graphql": "16.6.0",
+    "relay-compiler": "14.1.0"
   }
 }
