@@ -17,8 +17,8 @@ import {
 } from '@chakra-ui/react'
 import {faPlusSquare} from '@fortawesome/pro-duotone-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import {useMutation} from 'react-relay/hooks'
-// import {graphql} from 'babel-plugin-relay/macro'
+import {useMutation} from 'react-relay/hooks'
+import {graphql} from 'babel-plugin-relay/macro'
 import {FastField, Form, Formik} from 'formik'
 
 export default function TodoCreateModal() {
@@ -26,20 +26,20 @@ export default function TodoCreateModal() {
 
   const {isOpen, onOpen, onClose} = useDisclosure()
 
-  // const [commit, isInFlight] = useMutation(graphql`
-  //   mutation TodoListCreateMutation($input: TodoInput!) {
-  //     todoCreate(input: $input) {
-  //       id
-  //       title
-  //       description
-  //       completed
-  //       user {
-  //         id
-  //         name
-  //       }
-  //     }
-  //   }
-  // `)
+  const [commit, isInFlight] = useMutation(graphql`
+    mutation TodoCreateModalMutation($input: TodoInput!) {
+      todoCreate(input: $input) {
+        id
+        title
+        description
+        completed
+        user {
+          id
+          name
+        }
+      }
+    }
+  `)
 
   return (
     <>
@@ -100,7 +100,7 @@ export default function TodoCreateModal() {
             <Button
               colorScheme="blue"
               form="todo-create-form"
-              // isLoading={isInFlight}
+              isLoading={isInFlight}
               type="submit"
             >
               Submit
@@ -115,19 +115,20 @@ export default function TodoCreateModal() {
   )
 
   function handleSubmit(values, formikBag) {
-    // commit({
-    //   variables: {
-    //     input: {
-    //       title: values.title,
-    //       description: values.description,
-    //     },
-    //   }
-    //   updater: (store) => {
-    //     const newTodo = store.getRootField('todoCreate')
-    //     const todos = store.getRoot().getLinkedRecords('todos')
-    //     store.getRoot().setLinkedRecords([...todos, newTodo], 'todos')
-    //   },
-    //   onCompleted: () => onClose(),
-    // })
+    commit({
+      variables: {
+        input: {
+          title: values.title,
+          description: values.description,
+        },
+      },
+      updater: (store) => {
+        const newTodo = store.getRootField('todoCreate')
+        const todos = store.getRoot().getLinkedRecords('todos')
+        store.getRoot().setLinkedRecords([...todos, newTodo], 'todos')
+      },
+      onCompleted: () => onClose(),
+      onError: (error) => console.error(error),
+    })
   }
 }

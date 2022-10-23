@@ -1,20 +1,20 @@
 import {Checkbox, Flex, Stack, Text} from '@chakra-ui/react'
 import Proptypes from 'prop-types'
-// import {useMutation} from 'react-relay/hooks'
-// import {graphql} from 'babel-plugin-relay/macro'
+import {useMutation} from 'react-relay/hooks'
+import {graphql} from 'babel-plugin-relay/macro'
 
 function TodoListItem({task: {id, title, description, completed, user}}) {
-  // const [commit, isInFlight] = useMutation(graphql`
-  //   mutation TodoListItemTodoUpdateCompletedMutation(
-  //     $completed: Boolean!
-  //     $todoId: ID!
-  //   ) {
-  //     todoUpdateCompleted(completed: $completed, todoId: $todoId) {
-  //       id
-  //       completed
-  //     }
-  //   }
-  // `)
+  const [commit] = useMutation(graphql`
+    mutation TodoListItemTodoUpdateCompletedMutation(
+      $completed: Boolean!
+      $todoId: ID!
+    ) {
+      todoUpdateCompleted(completed: $completed, todoId: $todoId) {
+        id
+        completed
+      }
+    }
+  `)
 
   return (
     <Flex
@@ -29,16 +29,16 @@ function TodoListItem({task: {id, title, description, completed, user}}) {
         size="lg"
         isChecked={completed}
         onChange={() => {
-          // commit({
-          //   variables: {
-          //     completed: !completed,
-          //     todoId: id,
-          //   },
-          //   updater: (store) => {
-          //     const todo = store.get(id)
-          //     todo.setValue(!completed, 'completed')
-          //   },
-          // })
+          commit({
+            variables: {
+              completed: !completed,
+              todoId: id,
+            },
+            updater: (store) => {
+              const todo = store.get(id)
+              todo.setValue(!completed, 'completed')
+            },
+          })
         }}
       />
       <Stack

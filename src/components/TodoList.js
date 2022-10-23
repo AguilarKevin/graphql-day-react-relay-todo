@@ -1,29 +1,27 @@
 import {Flex, Stack, Text, Divider} from '@chakra-ui/react'
-// import TodoListItem from './TodoListItem'
-// import {useLazyLoadQuery} from 'react-relay/hooks'
-// import {graphql} from 'babel-plugin-relay/macro'
+import TodoListItem from './TodoListItem'
+import {useLazyLoadQuery} from 'react-relay/hooks'
+import {graphql} from 'babel-plugin-relay/macro'
 import TodoCreateModal from './TodoCreateModal'
 
-// const todos = []
-
 export default function TodoList() {
-  // const {todos} = useLazyLoadQuery(
-  //   graphql`
-  //     query TodoListQuery {
-  //       todos {
-  //         id
-  //         title
-  //         description
-  //         completed
-  //         user {
-  //           id
-  //           name
-  //         }
-  //       }
-  //     }
-  //   `,
-  //   {}
-  // )
+  const {todos} = useLazyLoadQuery(
+    graphql`
+      query TodoListQuery {
+        todos {
+          id
+          title
+          description
+          completed
+          user {
+            id
+            name
+          }
+        }
+      }
+    `,
+    {}
+  )
 
   return (
     <Flex gap="4">
@@ -43,11 +41,11 @@ export default function TodoList() {
         <TodoCreateModal />
 
         <Stack width="full">
-          {/* {todos
+          {todos
             .filter((todo) => !todo.completed)
             ?.map((task) => (
               <TodoListItem key={task.id} task={task} />
-            ))} */}
+            ))}
         </Stack>
       </Stack>
       <Stack
@@ -64,11 +62,11 @@ export default function TodoList() {
         </Text>
         <Divider />
         <Stack width="full">
-          {/* {todos
+          {todos
             .filter((todo) => todo.completed)
             ?.map((task) => (
               <TodoListItem key={task.id} task={task} />
-            ))} */}
+            ))}
         </Stack>
       </Stack>
     </Flex>

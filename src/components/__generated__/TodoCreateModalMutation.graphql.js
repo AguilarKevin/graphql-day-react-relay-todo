@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<628efc70503148067cabc6d216e14e62>>
+ * @generated SignedSource<<a1c32c32ff3bc15fd6623f37a4b6f2d6>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -15,10 +15,10 @@ export type TodoInput = {|
   description: string,
   title: string,
 |};
-export type TodoListCreateMutation$variables = {|
+export type TodoCreateModalMutation$variables = {|
   input: TodoInput,
 |};
-export type TodoListCreateMutation$data = {|
+export type TodoCreateModalMutation$data = {|
   +todoCreate: ?{|
     +completed: boolean,
     +description: string,
@@ -30,9 +30,9 @@ export type TodoListCreateMutation$data = {|
     |},
   |},
 |};
-export type TodoListCreateMutation = {|
-  response: TodoListCreateMutation$data,
-  variables: TodoListCreateMutation$variables,
+export type TodoCreateModalMutation = {|
+  response: TodoCreateModalMutation$data,
+  variables: TodoCreateModalMutation$variables,
 |};
 */
 
@@ -116,7 +116,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "TodoListCreateMutation",
+    "name": "TodoCreateModalMutation",
     "selections": (v2/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -125,23 +125,23 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "TodoListCreateMutation",
+    "name": "TodoCreateModalMutation",
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "37e68d93dc55f6585cbcb42fce8fd3dc",
+    "cacheID": "14a40ad08db8625dedec6ad8cbeda64a",
     "id": null,
     "metadata": {},
-    "name": "TodoListCreateMutation",
+    "name": "TodoCreateModalMutation",
     "operationKind": "mutation",
-    "text": "mutation TodoListCreateMutation(\n  $input: TodoInput!\n) {\n  todoCreate(input: $input) {\n    id\n    title\n    description\n    completed\n    user {\n      id\n      name\n    }\n  }\n}\n"
+    "text": "mutation TodoCreateModalMutation(\n  $input: TodoInput!\n) {\n  todoCreate(input: $input) {\n    id\n    title\n    description\n    completed\n    user {\n      id\n      name\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node/*: any*/).hash = "bd89eb9a28e0f878fec3abdc6acaf377";
+(node/*: any*/).hash = "3f13e8951b709409cca1771a30ac6426";
 
 module.exports = ((node/*: any*/)/*: Mutation<
-  TodoListCreateMutation$variables,
-  TodoListCreateMutation$data,
+  TodoCreateModalMutation$variables,
+  TodoCreateModalMutation$data,
 >*/);
